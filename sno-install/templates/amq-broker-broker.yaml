@@ -11,7 +11,52 @@ spec:
     requireLogin: false
     messageMigration: false
     managementRBACEnabled: true
-    journalType: nio
+    journalType: aio
     jolokiaAgentEnabled: false
     image: placeholder
   adminUser: {{ .Values.amqbroker.adminUser }}
+  console:
+    expose: true
+  acceptors:
+    - name: mqtts
+      protocols: mqtt
+      port: 8883
+      sslEnabled: true
+      sslSecret: endpoint-service-tls-secret
+      enabledCipherSuites: TLS_RSA_WITH_AES_256_CBC_SHA
+      enabledProtocols: TLSv1,TLSv1.1,TLSv1.2
+      needClientAuth: false
+      wantClientAuth: false
+      sslProvider: JDK
+      expose: true
+      anycastPrefix: jms.queue.
+      multicastPrefix: /topic/
+    - name: mqtt
+      protocols: mqtt
+      port: 1883
+      sslEnabled: false
+      needClientAuth: false
+      wantClientAuth: false
+      expose: false
+      anycastPrefix: jms.queue.
+      multicastPrefix: /topic/
+    - name: amqp
+      protocols: amqp
+      port: 5672
+      needClientAuth: false
+      wantClientAuth: false
+  connectors:
+    - name: connector0
+      host: localhost
+      port: 22222
+      sslEnabled: false
+      enabledProtocols: TLSv1,TLSv1.1,TLSv1.2
+      needClientAuth: true
+      wantClientAuth: true
+      verifyHost: true
+      sslProvider: JDK
+      sniHost: localhost
+      expose: true
+  upgrades:
+      enabled: false
+      minor: false
