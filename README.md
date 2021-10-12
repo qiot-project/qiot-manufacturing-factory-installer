@@ -14,6 +14,7 @@ Download helm CLI: https://helm.sh/docs/intro/install/
 
 ```
 oc login -u kubeadmin -p [KUBEADMIN-PASSWORD] --server=https://api.[SNO.DOMAIN].com:6443
+```
 
 - Install helm template sno-pre-install.
 
