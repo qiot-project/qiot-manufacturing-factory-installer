@@ -13,7 +13,7 @@ Download the Openshift client from the [official download page](https://access.r
 This template will contain the operators of Openshift-GitOps, AMQ-Broker and the MachineConfig to mount HostPath for persistence of MongoDB and PostgreSQL.
 
 ```
-helm install sno-pre-install ./sno-pre-install -create-namespace --namespace factory
+helm install sno-pre-install ./sno-pre-install --create-namespace --namespace factory
 ```
 
 Wait ~4 minutes until the SNO reboot caused by the MachineConfig.
