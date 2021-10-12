@@ -38,4 +38,4 @@ helm install sno-install ./sno-install --namespace factory
 
 ## Considerations
 
-We need to provide persistent storage for databases, and for this context we add the easiest solution to integrate all-in-one providing hostPath storage witch require run pods as privileged, and SElinux chcon (done with MachineConfig CR), take in consideration that this is just for testing, in production environment you will need to add external storage to the NUC, like external disks, nfs, ODF, etc.
+We need to provide persistent storage for databases, and for this context we add the easiest solution to integrate all-in-one providing hostPath storage which requires running pods as privileged, and SElinux chcon (done with MachineConfig CR), please note this is just for testing, in production environment you will need to add external storage to the NUC, like external disks, nfs, ODF, etc.
