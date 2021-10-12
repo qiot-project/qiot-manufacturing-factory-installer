@@ -2,6 +2,10 @@
 
 steps to install components in Single Node Openshift:
 
+## Prerequisites
+
+Download the Openshift client from the [official download page](https://access.redhat.com/downloads/content/290/ver=4.8/rhel---8/4.8.13/x86_64/product-software)
+
 ## Step 1:
 
 - Install helm template sno-pre-install.
