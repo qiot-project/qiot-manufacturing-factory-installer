@@ -18,6 +18,15 @@ spec:
   console:
     expose: true
   acceptors:
+    - name: edge
+      port: 61617
+      wantClientAuth: false
+      expose: true
+      needClientAuth: false
+      sslEnabled: true
+      protocols: core
+      sslSecret: endpoint-service-tls-secret
+      sslProvider: JDK
     - name: mqtts
       protocols: mqtt
       port: 8883
