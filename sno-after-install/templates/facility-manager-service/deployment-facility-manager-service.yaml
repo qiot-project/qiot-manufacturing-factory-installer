@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: production-validator-service
+  name: facility-manager-service
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: production-validator-service
+      app: facility-manager-service
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -17,13 +17,13 @@ spec:
   template:
     metadata:
       labels:
-        app: production-validator-service
-        deploymentconfig: production-validator-service
+        app: facility-manager-service
+        deploymentconfig: facility-manager-service
     spec:
       containers:
-      - image: quay.io/qiotmanufacturing/factory-production-validator:latest
-        imagePullPolicy: IfNotPresent
-        name: production-validator-service
+      - image: quay.io/qiotmanufacturing/factory-facility-manager
+        imagePullPolicy: Always
+        name: facility-manager-service
         ports:
         - containerPort: 8080
           protocol: TCP
@@ -32,10 +32,7 @@ spec:
         terminationMessagePolicy: File
         volumeMounts:
         - mountPath: /config
-          name: production-validator-service
-        - mountPath: /var/data/qiot/factory/data/
-          name: streamservice
-          readOnly: true
+          name: facility-manager-service
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
@@ -44,9 +41,5 @@ spec:
       volumes:
       - configMap:
           defaultMode: 420
-          name: production-validator-service
-        name: production-validator-service
-      - name: streamservice
-        secret:
-          defaultMode: 420
-          secretName: stream-service-truststore
+          name: facility-manager-service
+        name: facility-manager-service
