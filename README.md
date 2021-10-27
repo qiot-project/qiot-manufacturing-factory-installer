@@ -16,7 +16,7 @@ Download helm CLI: https://helm.sh/docs/intro/install/
 oc login -u kubeadmin -p [KUBEADMIN-PASSWORD] --server=https://api.[SNO.DOMAIN].com:6443
 ```
 
-- Install helm template sno-pre-install.
+- Install helm template sno-pre-install. It contains the heml chart for the infrastructure piece.
 
 This template will contain the operators of Openshift-GitOps, AMQ-Broker and the MachineConfig to mount HostPath for persistence of MongoDB and PostgreSQL.
 
@@ -28,7 +28,7 @@ Wait ~4 minutes until the SNO reboot caused by the MachineConfig.
 
 ## Step 2:
 
-- Install helm template sno-install.
+- Install helm template sno-install. It contains the heml chart for the software infrastructure piece.
 
 This template will contain the components required to deploy MongoDB, PostgreSQL and AMQ Broker.
 
@@ -52,6 +52,17 @@ Check again if the broker is created:
 ```
 oc get pods -n factory
 ```
+
+## Step 3:
+
+- Install helm template sno-after-install. It contains the heml chart for the workload piece.
+
+This template will contain the components required to deploy MongoDB, PostgreSQL and AMQ Broker.
+
+```
+helm install sno-after-install ./sno-after-install --namespace factory
+```
+
 
 ## Considerations
 

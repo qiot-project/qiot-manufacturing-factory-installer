@@ -1,0 +1,17 @@
+apiVersion: v1
+data:
+  application.properties: |-
+    quarkus.ssl.native=false
+    quarkus.native.enable-all-security-services=false
+    factoryproductline-api/mp-rest/url=http://product-line-service:8080
+    facility-manager-api/mp-rest/url=http://facility-manager-service:8080
+    quarkus.artemis.url=tcp://factory01-broker-hdls-svc:61616
+    kafka.bootstrap.servers=stream-service-kafka-bootstrap-manufacturing-dev.apps.cluster-4ktth.4ktth.sandbox1357.opentlc.com:443
+    kafka.ssl.truststore.location=/var/data/qiot/factory/data/streamservice.ts
+    kafka.ssl.truststore.password=password
+    kafka.security.protocol=SASL_SSL
+    kafka.sasl.jaas.config=org.apache.kafka.common.security.scram.ScramLoginModule required username="telemetry-producer" password="NgU2OfiNkmB5";
+    kafka.sasl.mechanism=SCRAM-SHA-512
+kind: ConfigMap
+metadata:
+  name: production-validator-service
