@@ -33,7 +33,6 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: facility-manager-service
-        volumeMounts:
         - mountPath: /var/data/qiot
           name: facility-manager-service-1
       dnsPolicy: ClusterFirst
