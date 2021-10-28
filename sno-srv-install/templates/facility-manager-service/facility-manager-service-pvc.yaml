@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: facility-manager-service-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.facilitymanagerservice.storageCapacity }}
+  storageClassName: manual
+  volumeName: facility-manager-service-pv

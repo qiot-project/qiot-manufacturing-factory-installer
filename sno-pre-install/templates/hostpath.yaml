@@ -12,6 +12,19 @@ spec:
       units:
         - contents: |
             [Unit]
+            Description=Create directory for facility-manager-service
+            Before=kubelet.service
+            [Service]
+            Type=oneshot
+            RemainAfterExit=yes
+            ExecStartPre=mkdir -p {{ .Values.facilitymanagerservice.path }}
+            ExecStart=chown core:core {{ .Values.facilitymanagerservice.path }}
+            [Install]
+            WantedBy=multi-user.target
+          enabled: true
+          name: hostpath-mongodb.service
+        - contents: |
+            [Unit]
             Description=Create directory for mongodb
             Before=kubelet.service
             [Service]

@@ -1,0 +1,4 @@
+name: manufacturing-srv-factory-sno-install
+facilitymanagerservice:
+  path: "/var/hpvolumes/facility_manager_service"
+  storageCapacity: 5Gi

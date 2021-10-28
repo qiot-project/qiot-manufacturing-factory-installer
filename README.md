@@ -60,7 +60,7 @@ oc get pods -n factory
 This template will contain the components required to deploy MongoDB, PostgreSQL and AMQ Broker.
 
 ```
-helm install sno-after-install ./sno-after-install --namespace factory
+helm install sno-srv-install ./sno-srv-install --namespace factory
 ```
 
 
