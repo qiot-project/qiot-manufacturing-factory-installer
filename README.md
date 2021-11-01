@@ -49,7 +49,7 @@ oc login -u kubeadmin -p [KUBEADMIN-PASSWORD] --server=https://api.[SNO.DOMAIN].
 This template will contain the operators of Openshift-GitOps and AMQ-Broker
 
 ```
-helm install sno-pre-install ./sno-pre-install --create-namespace --namespace factory
+helm install sno-olm-install ./sno-olm-install --create-namespace --namespace factory
 ```
 
 ## Step 3:
