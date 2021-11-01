@@ -35,6 +35,9 @@ spec:
           name: facility-manager-service
         - mountPath: /var/data/qiot
           name: facility-manager-service-1
+        - mountPath: /cert/
+          name: facility-manager-service-2
+          readOnly: true
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
@@ -48,3 +51,7 @@ spec:
       - name: facility-manager-service-1
         persistentVolumeClaim:
           claimName: facility-manager-service-pvc
+      - name: facility-manager-service-2
+        secret:
+          defaultMode: 420
+          secretName: bootstrap-certificate-client
