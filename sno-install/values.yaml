@@ -1,16 +1,20 @@
 name: manufacturing-comp-factory-sno-install
 amqbroker:
   size: 1
-  brokerName: factory01-broker
+  brokerName: broker-service
   adminPassword: qiotmanufacturingpassword
   adminUser: qiotmanufacturing
+  path: "/var/hpvolumes/amqbroker"
+  storageCapacity: 5Gi
 mongo:
   path: "/var/hpvolumes/mongodb"
   storageCapacity: 5Gi
-  MONGODB_ADMIN_PASSWORD: qiotmanufacturingmongoadminpass
-  MONGODB_DATABASE: qiotmongo
-  MONGODB_PASSWORD: mongopass
-  MONGODB_USER: mongouser
+  MONGO_INITDB_ROOT_USERNAME: qiotroot
+  MONGO_INITDB_ROOT_PASSWORD: qiotrootpassword
+  MONGODB_ADMIN_PASSWORD: qiotrootpassword
+  MONGODB_DATABASE: qiot_manufacturing
+  MONGODB_PASSWORD: qiotmanufacturingpassword
+  MONGODB_USER: qiotmanufacturing
 postgresql:
   path: "/var/hpvolumes/postgresql"
   storageCapacity: 5Gi

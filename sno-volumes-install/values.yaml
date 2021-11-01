@@ -1,8 +1,7 @@
-name: manufacturing-comp-factory-sno-pre-install
+name: manufacturing-comp-factory-sno-volumes-install
 amqbroker:
-  startingCSV: amq-broker-operator.v7.8.1-opr-3
-gitops:
-  startingCSV: openshift-gitops-operator.v1.2.1
+  path: "/var/hpvolumes/amqbroker"
+  storageCapacity: 5Gi
 mongo:
   path: "/var/hpvolumes/mongodb"
   storageCapacity: 5Gi

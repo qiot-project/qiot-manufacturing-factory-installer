@@ -8,6 +8,7 @@ spec:
   deploymentPlan:
     size: {{ .Values.amqbroker.size }}
     persistenceEnabled: false
+    journalType: nio
     requireLogin: false
     messageMigration: false
     managementRBACEnabled: true

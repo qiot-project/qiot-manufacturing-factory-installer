@@ -5,7 +5,7 @@ data:
     quarkus.native.enable-all-security-services=false
     factoryproductline-api/mp-rest/url=http://product-line-service:8080
     facility-manager-api/mp-rest/url=http://facility-manager-service:8080
-    quarkus.artemis.url=tcp://factory01-broker-hdls-svc:61616
+    quarkus.artemis.url=tcp://broker-service-hdls-svc:61616
     kafka.bootstrap.servers=stream-service-kafka-bootstrap-manufacturing-dev.apps.cluster-4ktth.4ktth.sandbox1357.opentlc.com:443
     kafka.ssl.truststore.location=/var/data/qiot/factory/data/streamservice.ts
     kafka.ssl.truststore.password=password

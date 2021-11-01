@@ -8,7 +8,6 @@ Download the Openshift client from the [official download page](https://access.r
 
 Download helm CLI: https://helm.sh/docs/intro/install/
 
-## Step 1:
 
 - Login to your SNO with oc CLI.
 
@@ -16,17 +15,44 @@ Download helm CLI: https://helm.sh/docs/intro/install/
 oc login -u kubeadmin -p [KUBEADMIN-PASSWORD] --server=https://api.[SNO.DOMAIN].com:6443
 ```
 
-- Install helm template sno-pre-install. It contains the heml chart for the infrastructure piece.
-
-This template will contain the operators of Openshift-GitOps, AMQ-Broker and the MachineConfig to mount HostPath for persistence of MongoDB and PostgreSQL.
+# Cleanup
 
 ```
-helm install sno-pre-install ./sno-pre-install --create-namespace --namespace factory
+helm uninstall sno-srv-install --namespace factory
+helm uninstall sno-install --namespace factory
+helm uninstall sno-olm-install --namespace factory
+helm uninstall sno-volumes-install --namespace factory
+oc delete project factory
+```
+
+## Step 1:
+- Install helm template sno-pre-install. It contains the Helm chart for the infrastructure piece.
+
+This template will install the MachineConfig to mount HostPath for persistence.
+
+```
+helm install sno-volumes-install ./sno-volumes-install --create-namespace --namespace factory
 ```
 
 Wait ~4 minutes until the SNO reboot caused by the MachineConfig.
 
 ## Step 2:
+
+- Login to your SNO with oc CLI.
+
+```
+oc login -u kubeadmin -p [KUBEADMIN-PASSWORD] --server=https://api.[SNO.DOMAIN].com:6443
+```
+
+- Install helm template sno-olm-install. It contains the heml chart for the infrastructure piece.
+
+This template will contain the operators of Openshift-GitOps and AMQ-Broker
+
+```
+helm install sno-pre-install ./sno-pre-install --create-namespace --namespace factory
+```
+
+## Step 3:
 
 - Install helm template sno-install. It contains the heml chart for the software infrastructure piece.
 
@@ -42,7 +68,7 @@ Run the next command to check if the pods are running
 oc get pods -n factory
 ```
 
-If you can't see the broker pod "factory01-broker-ss-0" run the next command as workaround to restart the AMQ-Broker operator pod:
+If you can't see the broker pod "{{ .Values.amqbroker.brokerName }}" (see your values.yaml file!) run the next command as workaround to restart the AMQ-Broker operator pod:
 
 ```
 oc delete pod -l name=amq-broker-operator -n factory
@@ -53,7 +79,7 @@ Check again if the broker is created:
 oc get pods -n factory
 ```
 
-## Step 3:
+## Step 4:
 
 - Install helm template sno-after-install. It contains the heml chart for the workload piece.
 
