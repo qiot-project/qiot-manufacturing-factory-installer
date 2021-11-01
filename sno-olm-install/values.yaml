@@ -1,0 +1,15 @@
+name: manufacturing-comp-factory-sno-olm-install
+kafkaclient:
+  init: True
+  
+########## A-MQ Broker ##########
+amqbroker:
+  startingCSV: amq-broker-operator.v7.8.3-opr-1
+  
+########## GitOps ##########
+gitops:
+  startingCSV: openshift-gitops-operator.v1.3.1
+
+########## Cert Manager ##########
+certmanager:
+  startingCSV: cert-manager.v1.6.0

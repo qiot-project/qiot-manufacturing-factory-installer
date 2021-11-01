@@ -1,7 +1,11 @@
 apiVersion: v1
 data:
   application.properties: |-
-    plant-manager-api/mp-rest/url=http://plant-manager-service-manufacturing-dev.apps.cluster-4ktth.4ktth.sandbox1357.opentlc.com
+    qiot.factory.serial={{ .Values.facilitymanagerservice.serial }}
+    qiot.factory.name={{ .Values.facilitymanagerservice.name }}
+    plant-manager-api/mp-rest/url=https://plant-manager-service-manufacturing-dev.apps.cluster-4ktth.4ktth.sandbox1357.opentlc.com
+    plant-manager-api/mp-rest/trustStore=/cert/bootstrap.ts
+    plant-manager-api/mp-rest/trustStorePassword=password
     registration-service-api/mp-rest/url=http://registration-service:8080
     quarkus.datasource.jdbc.url=jdbc:postgresql://postgresql:5432/qiot_manufacturing
 kind: ConfigMap

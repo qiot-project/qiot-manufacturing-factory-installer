@@ -1,5 +1,5 @@
 apiVersion: v2
-name: manufacturing-comp-factory-sno-pre-install
+name: manufacturing-comp-factory-sno-olm-install
 description: Helm chart to deploy factory components to SNO
 type: application
 version: 0.0.1

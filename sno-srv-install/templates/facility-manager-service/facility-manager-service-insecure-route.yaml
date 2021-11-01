@@ -1,10 +1,10 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: facility-manager-service
+  name: facility-manager-service-insecure
 spec:
   port:
-    targetPort: tcp-external
+    targetPort: tcp-internal
   to:
     kind: Service
     name: facility-manager-service
