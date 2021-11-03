@@ -16,6 +16,8 @@ spec:
     type: RollingUpdate
   template:
     metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/registration-service/registration-service-cm.yaml") . | sha256sum }}
       labels:
         app: registration-service
         deploymentconfig: registration-service
