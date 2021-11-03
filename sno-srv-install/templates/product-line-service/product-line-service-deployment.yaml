@@ -16,6 +16,8 @@ spec:
     type: RollingUpdate
   template:
     metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/product-line-service/product-line-service-cm.yaml") . | sha256sum }}
       labels:
         app: product-line-service
         deploymentconfig: product-line-service
