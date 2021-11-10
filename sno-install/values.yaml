@@ -6,6 +6,9 @@ amqbroker:
   adminUser: qiotmanufacturing
   path: "/var/hpvolumes/amqbroker"
   storageCapacity: 5Gi
+  certificate:
+    baseDomain: qiot-project.io
+    wildcardDomain: apps.cluster-4ktth.4ktth.sandbox1357.opentlc.com
 mongo:
   path: "/var/hpvolumes/mongodb"
   storageCapacity: 5Gi
@@ -21,3 +24,17 @@ postgresql:
   POSTGRESQL_DATABASE: qiot_manufacturing
   POSTGRESQL_PASSWORD: qiotmanufacturingpassword
   POSTGRESQL_USER: qiotmanufacturing
+
+
+oc:
+  image:
+    repository: quay.io/openshift/origin-cli
+    pullPolicy: IfNotPresent
+    tag: 4.8
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
