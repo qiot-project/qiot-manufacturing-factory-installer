@@ -85,7 +85,8 @@ oc get issuer -n factory
 This template will contain the components required to deploy MongoDB, PostgreSQL and AMQ Broker.
 
 ```
-helm install sno-install ./sno-install --namespace factory
+export WILDCARD=apps.$(oc get dns cluster -o jsonpath='{.spec.baseDomain}')
+helm install sno-install ./sno-install --set amqbroker.certificate.wildcardDomain=$WILDCARD --namespace factory
 ```
 
 Run the next command to check if the pods are running
