@@ -37,6 +37,7 @@ spec:
           name: registration-service
       dnsPolicy: ClusterFirst
       restartPolicy: Always
+      serviceAccountName: registration-service
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
