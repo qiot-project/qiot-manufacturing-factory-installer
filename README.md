@@ -80,15 +80,6 @@ oc get issuer -n factory
 
 ## Step 4:
 
-- Pre Provision internal certificate for the required components AMQ Broker and Facility
-
-```
-helm install sno-crt-install ./sno-crt-install --namespace factory
-```
-
-
-## Step 5:
-
 - Install helm template sno-install. It contains the helm chart for the software infrastructure piece.
 
 This template will contain the components required to deploy MongoDB, PostgreSQL and AMQ Broker.
