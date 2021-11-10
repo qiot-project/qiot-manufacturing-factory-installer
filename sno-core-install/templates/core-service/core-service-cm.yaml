@@ -9,6 +9,7 @@ data:
     plant-manager-api/mp-rest/trustStore=/cert/bootstrap.ts
     plant-manager-api/mp-rest/trustStorePassword=password
     registration-service-api/mp-rest/url=http://registration-service:8080
+    quarkus.kubernetes-client.namespace={{ .Release.Namespace }}
 kind: ConfigMap
 metadata:
   name: core-service
