@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
   application.properties: |-
-    quarkus.log.level=DEBUG
+    quarkus.log.level=INFO
     qiot.factory.serial={{ .Values.coreservice.serial }}
     qiot.factory.name={{ .Values.coreservice.name }}
     qiot.certstore.password=password

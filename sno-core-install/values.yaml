@@ -2,5 +2,5 @@ name: manufacturing-core-factory-sno-install
 domain:
   name: "manufacturingfacility.qiot.io"
 coreservice:
-  serial: abattaglfactorytestserial37
-  name: abattaglfactorytestname37
+  serial: abattaglfactorytestserial38
+  name: abattaglfactorytestname38

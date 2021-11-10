@@ -36,10 +36,14 @@ spec:
         - mountPath: /config
           name: facility-manager-service
         - mountPath: /cert/
+          name: facility-manager-service-1
+          readOnly: true
+        - mountPath: /certbootstrap/
           name: facility-manager-service-2
           readOnly: true
       dnsPolicy: ClusterFirst
       restartPolicy: Always
+      serviceAccountName: facility-manager
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
@@ -48,6 +52,10 @@ spec:
           defaultMode: 420
           name: facility-manager-service
         name: facility-manager-service
+      - name: facility-manager-service-1
+        secret:
+          defaultMode: 420
+          secretName: bootstrap-certificate
       - name: facility-manager-service-2
         secret:
           defaultMode: 420
