@@ -10,19 +10,6 @@ spec:
       version: 2.2.0
     systemd:
       units:
-        - name: hostpath-mongodb.service
-          enabled: true
-          contents: |
-            [Unit]
-            Description=Create directory for facility-manager-service
-            Before=kubelet.service
-            [Service]
-            Type=oneshot
-            RemainAfterExit=yes
-            ExecStartPre=mkdir -p {{ .Values.facilitymanagerservice.path }}
-            ExecStart=chown core:core {{ .Values.facilitymanagerservice.path }}
-            [Install]
-            WantedBy=multi-user.target
         - name: hostpath-amqbroker.service
           enabled: true
           contents: |

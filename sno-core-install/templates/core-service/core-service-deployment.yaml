@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: facility-manager-service
+  name: core-service
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: facility-manager-service
+      app: core-service
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -17,15 +17,15 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/config: {{ include (print $.Template.BasePath "/facility-manager-service/facility-manager-service-cm.yaml") . | sha256sum }}
+        checksum/config: {{ include (print $.Template.BasePath "/core-service/core-service-cm.yaml") . | sha256sum }}
       labels:
-        app: facility-manager-service
-        deploymentconfig: facility-manager-service
+        app: core-service
+        deploymentconfig: core-service
     spec:
       containers:
-      - image: quay.io/qiotmanufacturing/factory-facility-manager
+      - image: quay.io/qiotmanufacturing/factory-core
         imagePullPolicy: Always
-        name: facility-manager-service
+        name: core-service
         ports:
         - containerPort: 8080
           protocol: TCP
@@ -34,21 +34,22 @@ spec:
         terminationMessagePolicy: File
         volumeMounts:
         - mountPath: /config
-          name: facility-manager-service
+          name: core-service
         - mountPath: /cert/
-          name: facility-manager-service-2
+          name: core-service-2
           readOnly: true
       dnsPolicy: ClusterFirst
       restartPolicy: Always
+      serviceAccountName: core-service
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
       volumes:
-      - configMap:
+      - name: core-service
+        configMap:
           defaultMode: 420
-          name: facility-manager-service
-        name: facility-manager-service
-      - name: facility-manager-service-2
+          name: core-service
+      - name: core-service-2
         secret:
           defaultMode: 420
           secretName: bootstrap-certificate-client

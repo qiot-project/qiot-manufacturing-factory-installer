@@ -8,6 +8,3 @@ mongo:
 postgresql:
   path: "/var/hpvolumes/postgresql"
   storageCapacity: 5Gi
-facilitymanagerservice:
-  path: "/var/hpvolumes/facility_manager_service"
-  storageCapacity: 5Gi
