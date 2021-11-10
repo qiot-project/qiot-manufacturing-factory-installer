@@ -8,7 +8,7 @@ amqbroker:
   storageCapacity: 5Gi
   certificate:
     baseDomain: qiot-project.io
-    wildcardDomain: apps.cluster-4ktth.4ktth.sandbox1357.opentlc.com
+    wildcardDomain: "manufacturingfacility.qiot.io"
 mongo:
   path: "/var/hpvolumes/mongodb"
   storageCapacity: 5Gi
@@ -24,8 +24,7 @@ postgresql:
   POSTGRESQL_DATABASE: qiot_manufacturing
   POSTGRESQL_PASSWORD: qiotmanufacturingpassword
   POSTGRESQL_USER: qiotmanufacturing
-
-
+    
 oc:
   image:
     repository: quay.io/openshift/origin-cli

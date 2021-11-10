@@ -14,17 +14,22 @@ metadata:
   labels:
     cert-manager.io/certificate-name: endpoint-service-edge
 spec:
-  commonName: endpoint-service-edge-0-svc.{{ .Release.Namespace }}.svc
+  commonName: {{ .Values.amqbroker.brokerName }}-edge-0-svc.{{ .Release.Namespace }}.svc
   dnsNames:
-    - endpoint-service-edge-0-svc.{{ .Release.Namespace }}.svc
-    - endpoint-service-edge-0-svc-rte.{{ .Release.Namespace }}.{{ .Values.amqbroker.certificate.baseDomain }}
-    - endpoint-service-edge-0-svc-rte-{{ .Release.Namespace }}.{{ .Values.amqbroker.certificate.wildcardDomain }}
+    - {{ .Values.amqbroker.brokerName }}-edge-0-svc.{{ .Release.Namespace }}.svc
+    - {{ .Values.amqbroker.brokerName }}-edge-0-svc-rte.{{ .Release.Namespace }}.{{ .Values.amqbroker.certificate.baseDomain }}
+    - {{ .Values.amqbroker.brokerName }}-edge-0-svc-rte-{{ .Release.Namespace }}.{{ .Values.amqbroker.certificate.wildcardDomain }}
   issuerRef:
     name: factory
   keystores:
-    jks:
+    pkcs12:
       create: true
       passwordSecretRef:
         key: PASSWORD
         name: keystore-endpoint-service-edge
+#    jks:
+#      create: true
+#      passwordSecretRef:
+#        key: PASSWORD
+#        name: keystore-endpoint-service-edge
   secretName: endpoint-service-edge-secret
