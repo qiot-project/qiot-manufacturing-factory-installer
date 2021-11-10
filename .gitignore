@@ -3,3 +3,4 @@
 /amq-broker-operator-7.9.0-ocp-install-examples/
 /gen-kafka-secret.sh
 /gen-plant-manager-secret.sh
+.history
