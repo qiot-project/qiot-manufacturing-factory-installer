@@ -20,7 +20,11 @@ oc login -u kubeadmin -p [KUBEADMIN-PASSWORD] --server=https://api.[SNO.DOMAIN].
 ```
 helm uninstall sno-srv-install --namespace factory
 helm uninstall sno-install --namespace factory
+helm uninstall sno-core-install --namespace factory
 helm uninstall sno-olm-install --namespace factory
+oc delete subscription amq-broker -n factory
+oc delete subscription amq-broker -n cert-manager
+oc delete subscription amq-broker -n openshift-gitops-operator
 helm uninstall sno-volumes-install --namespace factory
 oc delete project factory
 ```
@@ -54,6 +58,22 @@ helm install sno-olm-install ./sno-olm-install --create-namespace --namespace fa
 
 ## Step 3:
 
+- Install helm template sno-core-install. It contains the heml chart for the factory core piece.
+
+This template will contain the components required to deploy core-service and registration-service.
+
+```
+helm install --set coreservice.serial=<<YOUR_FACTORY_SERIAL>>,coreservice.name=<<YOUR_FACTORY_NAME>> sno-core-install ./sno-core-install --create-namespace --namespace factory
+```
+
+e.g.:
+
+```
+helm install --set coreservice.serial=abattaglfactorytestserial03,coreservice.name=abattaglfactorytestname03 sno-core-install ./sno-core-install --create-namespace --namespace factory
+```
+
+## Step 4:
+
 - Install helm template sno-install. It contains the heml chart for the software infrastructure piece.
 
 This template will contain the components required to deploy MongoDB, PostgreSQL and AMQ Broker.
@@ -79,7 +99,7 @@ Check again if the broker is created:
 oc get pods -n factory
 ```
 
-## Step 4:
+## Step 5:
 
 - Install helm template sno-after-install. It contains the heml chart for the workload piece.
 

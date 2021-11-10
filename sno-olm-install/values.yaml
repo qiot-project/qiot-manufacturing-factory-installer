@@ -12,4 +12,4 @@ gitops:
 
 ########## Cert Manager ##########
 certmanager:
-  startingCSV: cert-manager.v1.6.0
+  startingCSV: cert-manager.v1.6.1
