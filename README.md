@@ -105,7 +105,7 @@ Check again if the broker is created:
 oc get pods -n factory
 ```
 
-## Step 6:
+## Step 5:
 
 - Install helm template sno-after-install. It contains the heml chart for the workload piece.
 
