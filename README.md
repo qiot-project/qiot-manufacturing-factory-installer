@@ -110,7 +110,7 @@ oc get pods -n factory
 
 ## Step 5:
 
-- Install helm template sno-after-install. It contains the helm chart for the workload piece.
+- Install helm template sno-srv-install. It contains the helm chart for the workload piece.
 
 This template will contain the components required to deploy facility-manager-service, product-line-service and production-validator-service.
 
