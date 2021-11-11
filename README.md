@@ -42,7 +42,7 @@ Wait ~4 minutes until the SNO reboot caused by the MachineConfig.
 
 ## Step 2:
 
-- Install helm template sno-olm-install. It contains the heml chart for the operators piece.
+- Install helm template sno-olm-install. It contains the helm chart for the operators piece.
 
 This template will contain the operators of Openshift-GitOps, Cert-manager and AMQ-Broker
 
@@ -110,13 +110,12 @@ oc get pods -n factory
 
 ## Step 5:
 
-- Install helm template sno-after-install. It contains the heml chart for the workload piece.
+- Install helm template sno-after-install. It contains the helm chart for the workload piece.
 
-This template will contain the components required to deploy MongoDB, PostgreSQL and AMQ Broker.
+This template will contain the components required to deploy facility-manager-service, product-line-service and production-validator-service.
 
 ```
-helm install sno-srv-install ./sno-srv-install --namespace factory
-helm install sno-install ./sno-install --set certificate.wildcardDomain=$WILDCARD --namespace factory
+helm install sno-srv-install ./sno-srv-install --set certificate.wildcardDomain=$WILDCARD --namespace factory
 ```
 
 
