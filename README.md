@@ -30,7 +30,7 @@ oc delete project factory
 ```
 
 ## Step 1:
-- Install helm template sno-pre-install. It contains the Helm chart for the infrastructure piece.
+- Install helm template sno-volumes-install. It contains the Helm chart for the persistent volumes piece.
 
 This template will install the MachineConfig to mount HostPath for persistence.
 
@@ -42,15 +42,9 @@ Wait ~4 minutes until the SNO reboot caused by the MachineConfig.
 
 ## Step 2:
 
-- Login to your SNO with oc CLI.
+- Install helm template sno-olm-install. It contains the heml chart for the operators piece.
 
-```
-oc login -u kubeadmin -p [KUBEADMIN-PASSWORD] --server=https://api.[SNO.DOMAIN].com:6443
-```
-
-- Install helm template sno-olm-install. It contains the heml chart for the infrastructure piece.
-
-This template will contain the operators of Openshift-GitOps and AMQ-Broker
+This template will contain the operators of Openshift-GitOps, Cert-manager and AMQ-Broker
 
 ```
 helm install sno-olm-install ./sno-olm-install --namespace factory
@@ -58,7 +52,7 @@ helm install sno-olm-install ./sno-olm-install --namespace factory
 
 ## Step 3:
 
-- Install helm template sno-core-install. It contains the heml chart for the factory core piece.
+- Install helm template sno-core-install. It contains the helm chart for the factory core piece.
 
 This template will contain the components required to deploy core-service and registration-service.
 
@@ -72,7 +66,7 @@ e.g.:
 helm install --set coreservice.serial=abattaglfactorytestserial03,coreservice.name=abattaglfactorytestname03 sno-core-install ./sno-core-install --namespace factory
 ```
 
-Run the next command to check if the issuer is valid
+Run the next command to check if the delegate issuer created by the registration-service has been deployed and is valid.
 
 ```
 oc get issuer -n factory
@@ -84,12 +78,20 @@ oc get issuer -n factory
 
 This template will contain the components required to deploy MongoDB, PostgreSQL and AMQ Broker.
 
+First things first: export a variable containing the apps domain of your SNO:
+
 ```
 export WILDCARD=apps.$(oc get dns cluster -o jsonpath='{.spec.baseDomain}')
+```
+
+Verify the content of the variable `WILDCARD` running the command `echo $WILDCARD`
+The variable should contain a value like `apps.<<YOUR_FACTORY_DOMAIN>>`
+
+```
 helm install sno-install ./sno-install --set certificate.wildcardDomain=$WILDCARD --namespace factory
 ```
 
-Run the next command to check if the pods are running
+Run the next command to check if the pods are running;
 
 ```
 oc get pods -n factory

@@ -1,6 +1,9 @@
 name: manufacturing-core-factory-sno-install
 domain:
   name: "manufacturingfacility.qiot.io"
+certificate:
+  baseDomain: qiot-project.io
+  wildcardDomain: "manufacturingfacility.qiot.io"
 coreservice:
-  serial: abattaglfactorytestserial38
-  name: abattaglfactorytestname38
+  serial: abattaglfactory01
+  name: abattaglfactory01
