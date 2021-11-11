@@ -1,4 +1,7 @@
 name: manufacturing-comp-factory-sno-install
+certificate:
+  baseDomain: qiot-project.io
+  wildcardDomain: "manufacturingfacility.qiot.io"
 amqbroker:
   size: 1
   brokerName: broker-service
@@ -6,9 +9,6 @@ amqbroker:
   adminUser: qiotmanufacturing
   path: "/var/hpvolumes/amqbroker"
   storageCapacity: 5Gi
-  certificate:
-    baseDomain: qiot-project.io
-    wildcardDomain: "manufacturingfacility.qiot.io"
 mongo:
   path: "/var/hpvolumes/mongodb"
   storageCapacity: 5Gi

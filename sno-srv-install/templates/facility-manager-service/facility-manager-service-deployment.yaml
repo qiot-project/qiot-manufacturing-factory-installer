@@ -55,7 +55,7 @@ spec:
       - name: facility-manager-service-1
         secret:
           defaultMode: 420
-          secretName: bootstrap-certificate
+          secretName: facility-manager-service-secret
       - name: facility-manager-service-2
         secret:
           defaultMode: 420

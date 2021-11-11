@@ -17,8 +17,8 @@ spec:
   commonName: {{ .Values.amqbroker.brokerName }}-edge-0-svc.{{ .Release.Namespace }}.svc
   dnsNames:
     - {{ .Values.amqbroker.brokerName }}-edge-0-svc.{{ .Release.Namespace }}.svc
-    - {{ .Values.amqbroker.brokerName }}-edge-0-svc-rte.{{ .Release.Namespace }}.{{ .Values.amqbroker.certificate.baseDomain }}
-    - {{ .Values.amqbroker.brokerName }}-edge-0-svc-rte-{{ .Release.Namespace }}.{{ .Values.amqbroker.certificate.wildcardDomain }}
+    - {{ .Values.amqbroker.brokerName }}-edge-0-svc-rte.{{ .Release.Namespace }}.{{ .Values.certificate.baseDomain }}
+    - {{ .Values.amqbroker.brokerName }}-edge-0-svc-rte-{{ .Release.Namespace }}.{{ .Values.certificate.wildcardDomain }}
   issuerRef:
     name: factory
   keystores:

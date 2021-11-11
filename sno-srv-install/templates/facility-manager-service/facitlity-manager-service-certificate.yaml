@@ -17,8 +17,8 @@ spec:
   commonName: facility-manager-service.{{ .Release.Namespace }}.svc
   dnsNames:
     - facility-manager-service.{{ .Release.Namespace }}.svc
-    - facility-manager-service.{{ .Release.Namespace }}.{{ .Values.amqbroker.certificate.baseDomain }}
-    - facility-manager-service-{{ .Release.Namespace }}.{{ .Values.amqbroker.certificate.wildcardDomain }}
+    - facility-manager-service.{{ .Release.Namespace }}.{{ .Values.certificate.baseDomain }}
+    - facility-manager-service-{{ .Release.Namespace }}.{{ .Values.certificate.wildcardDomain }}
   issuerRef:
     name: factory
   keystores:

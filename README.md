@@ -23,8 +23,8 @@ helm uninstall sno-install --namespace factory
 helm uninstall sno-core-install --namespace factory
 helm uninstall sno-olm-install --namespace factory
 oc delete subscription amq-broker -n factory
-oc delete subscription amq-broker -n cert-manager
-oc delete subscription amq-broker -n openshift-gitops-operator
+oc delete subscription cert-manager -n openshift-operators
+oc delete subscription openshift-gitops-operator -n openshift-operators
 helm uninstall sno-volumes-install --namespace factory
 oc delete project factory
 ```
@@ -86,7 +86,7 @@ This template will contain the components required to deploy MongoDB, PostgreSQL
 
 ```
 export WILDCARD=apps.$(oc get dns cluster -o jsonpath='{.spec.baseDomain}')
-helm install sno-install ./sno-install --set amqbroker.certificate.wildcardDomain=$WILDCARD --namespace factory
+helm install sno-install ./sno-install --set certificate.wildcardDomain=$WILDCARD --namespace factory
 ```
 
 Run the next command to check if the pods are running
@@ -114,6 +114,7 @@ This template will contain the components required to deploy MongoDB, PostgreSQL
 
 ```
 helm install sno-srv-install ./sno-srv-install --namespace factory
+helm install sno-install ./sno-install --set certificate.wildcardDomain=$WILDCARD --namespace factory
 ```
 
 
