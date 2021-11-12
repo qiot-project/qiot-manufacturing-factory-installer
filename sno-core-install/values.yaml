@@ -5,5 +5,5 @@ certificate:
   baseDomain: qiot-project.io
   wildcardDomain: "manufacturingfacility.qiot.io"
 coreservice:
-  serial: abattaglfactory01
-  name: abattaglfactory01
+  serial: abattagl02
+  name: abattagl02

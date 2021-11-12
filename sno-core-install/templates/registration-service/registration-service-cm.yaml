@@ -1,6 +1,7 @@
 apiVersion: v1
 data:
   application.properties: |-
+    quarkus.log.level=DEBUG
     quarkus.kubernetes-client.namespace={{ .Release.Namespace }}
     qiot.cert-manager.issuer=factory
 kind: ConfigMap

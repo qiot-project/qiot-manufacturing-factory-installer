@@ -41,6 +41,9 @@ spec:
         - mountPath: /certbootstrap/
           name: facility-manager-service-2
           readOnly: true
+        - mountPath: /var/data/qiot/factory/data/
+          name: streamservice
+          readOnly: true
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       serviceAccountName: facility-manager
@@ -60,3 +63,7 @@ spec:
         secret:
           defaultMode: 420
           secretName: bootstrap-certificate-client
+      - name: streamservice
+        secret:
+          defaultMode: 420
+          secretName: stream-service-truststore
