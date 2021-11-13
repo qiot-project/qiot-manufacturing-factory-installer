@@ -1,6 +1,8 @@
 apiVersion: v1
 data:
   application.properties: |-
+    quarkus.log.level=DEBUG
+    quarkus.log.category."io.qiot.manufacturing".level=DEBUG
     quarkus.ssl.native=false
     quarkus.native.enable-all-security-services=false
     factoryproductline-api/mp-rest/url=http://product-line-service:8080
