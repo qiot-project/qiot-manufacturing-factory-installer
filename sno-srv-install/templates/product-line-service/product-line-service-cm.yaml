@@ -15,10 +15,10 @@ data:
     kafka.sasl.jaas.config={{ .Values.productlineservice.sasl }}
     kafka.sasl.mechanism=SCRAM-SHA-512
     mp.messaging.incoming.productline.connector=smallrye-kafka
+    mp.messaging.incoming.productline.topic=productline
     mp.messaging.incoming.productline.auto-generated-client-id=true
     mp.messaging.incoming.productline.auto.offset.reset=latest
     mp.messaging.incoming.productline.group.id=product-line
-    mp.messaging.incoming.productline.topic=productline
     mp.messaging.incoming.productline.failure-strategy=ignore
 kind: ConfigMap
 metadata:

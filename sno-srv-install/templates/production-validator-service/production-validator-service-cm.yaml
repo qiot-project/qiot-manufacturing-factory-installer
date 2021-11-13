@@ -14,6 +14,9 @@ data:
     kafka.security.protocol=SASL_SSL
     kafka.sasl.jaas.config={{ .Values.productionvalidatorservice.sasl }}
     kafka.sasl.mechanism=SCRAM-SHA-512
+    mp.messaging.outgoing.telemetryproduction.connector=smallrye-kafka
+    mp.messaging.outgoing.telemetryproduction.topic=telemetryproduction
+    mp.messaging.outgoing.telemetryproduction.value.serializer=io.qiot.manufacturing.factory.productionvalidation.util.serializer.ProductionTelemetrySerializer
 kind: ConfigMap
 metadata:
   name: production-validator-service
