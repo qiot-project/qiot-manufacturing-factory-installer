@@ -31,8 +31,8 @@ spec:
     - name: amqp
       protocols: amqp
       port: 5672
-      needClientAuth: false
-      wantClientAuth: false
+      needClientAuth: true
+      wantClientAuth: true
   connectors:
     - name: connector0
       host: localhost
