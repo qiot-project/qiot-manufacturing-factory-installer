@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
   application.properties: |-
-    quarkus.log.level=DEBUG
+    quarkus.log.level=INFO
     quarkus.log.category."io.qiot.manufacturing".level=DEBUG
     quarkus.ssl.native=false
     quarkus.native.enable-all-security-services=false
