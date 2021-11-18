@@ -21,30 +21,13 @@ spec:
   acceptors:
     - name: edge
       port: 61617
-      wantClientAuth: false
+      wantClientAuth: true
       expose: true
-      needClientAuth: false
+      needClientAuth: true
       sslEnabled: true
       protocols: core
       sslSecret: endpoint-service-tls-secret
       sslProvider: JDK
-    - name: amqp
-      protocols: amqp
-      port: 5672
-      needClientAuth: true
-      wantClientAuth: true
-  connectors:
-    - name: connector0
-      host: localhost
-      port: 22222
-      sslEnabled: false
-      enabledProtocols: TLSv1,TLSv1.1,TLSv1.2
-      needClientAuth: true
-      wantClientAuth: true
-      verifyHost: true
-      sslProvider: JDK
-      sniHost: localhost
-      expose: true
   upgrades:
       enabled: false
       minor: false
