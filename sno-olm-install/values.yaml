@@ -4,12 +4,12 @@ kafkaclient:
   
 ########## A-MQ Broker ##########
 amqbroker:
-  startingCSV: amq-broker-operator.v7.8.3-opr-1
+  startingCSV: amq-broker-operator.v7.10.0-opr-3
   
 ########## GitOps ##########
 gitops:
-  startingCSV: openshift-gitops-operator.v1.3.1
+  startingCSV: openshift-gitops-operator.v1.6.0
 
 ########## Cert Manager ##########
 certmanager:
-  startingCSV: cert-manager.v1.6.1
+  startingCSV: cert-manager.v1.9.1
