@@ -22,10 +22,10 @@ helm uninstall sno-srv-install --namespace factory
 helm uninstall sno-install --namespace factory
 helm uninstall sno-core-install --namespace factory
 helm uninstall sno-olm-install --namespace factory
-helm delete secret factory-data --namespace factory
-helm delete secret factory-secret --namespace factory
-helm delete secret endpoint-service-edge-secret --namespace factory
-helm delete secret endpoint-service-tls-secret --namespace factory
+oc delete secret factory-data --namespace factory
+oc delete secret factory-secret --namespace factory
+oc delete secret endpoint-service-edge-secret --namespace factory
+oc delete secret endpoint-service-tls-secret --namespace factory
 oc delete subscription amq-broker -n factory
 oc delete subscription cert-manager -n openshift-operators
 oc delete subscription openshift-gitops-operator -n openshift-operators
